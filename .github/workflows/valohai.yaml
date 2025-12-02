@@ -1,0 +1,14 @@
+# valohai.yaml
+# Single-step workflow executed in Valohai
+# Fully valid and lint-safe config
+
+- step:
+    name: cpu-info
+    image: ubuntu:22.04
+    command:
+      - apt-get update -y
+      - apt-get install -y util-linux
+      - lscpu | tee cpu-info.txt
+    outputs:
+      - name: cpu-info
+        path: cpu-info.txt
